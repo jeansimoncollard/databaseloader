@@ -1,0 +1,9 @@
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoaderStartupProject\bin\x64\Debug\DataLoaderStartupProject.exe.config
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoaderStartupProject\bin\x64\Debug\DataLoaderStartupProject.exe
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoaderStartupProject\bin\x64\Debug\DataLoaderStartupProject.pdb
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoaderStartupProject\bin\x64\Debug\DatabaseLoader.dll
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoaderStartupProject\bin\x64\Debug\DatabaseLoader.pdb
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoaderStartupProject\obj\x64\Debug\DataLoaderStartupProject.csprojResolveAssemblyReference.cache
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoaderStartupProject\obj\x64\Debug\DataLoaderStartupProject.exe
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoaderStartupProject\obj\x64\Debug\DataLoaderStartupProject.pdb
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoaderStartupProject\bin\x64\Debug\Oracle.ManagedDataAccess.dll

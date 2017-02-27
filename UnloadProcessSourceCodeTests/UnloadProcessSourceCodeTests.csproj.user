@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartArguments>5896 User Id=jeansimon%3b Password=password%3b F:\\Programmation\\dataLoader\\fileExamples\\example1.dataload</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <StartArguments>5896 User Id=jeansimon%3b Password=password%3b F:\\Programmation\\dataLoader\\fileExamples\\example1.dataload</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <StartArguments>1 9040 User Id=hr%3b Password=password%3b F:\Programmation\dataLoader\fileExamples\document 0.dataload</StartArguments>
+  </PropertyGroup>
+</Project>

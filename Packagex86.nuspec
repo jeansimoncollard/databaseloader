@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+	<title>Database Loader</title>
+    <id>DatabaseLoader.x86</id>
+    <version>1.0.0</version>
+    <authors>Jean-Simon</authors>
+    <owners>Jean-Simon</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Database Loader</description>
+    <releaseNotes>DatabaseLoader Alpha release.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>DatabaseLoader, Database Loader, Database Editor, Dataloader, Data Loader</tags>
+    <dependencies>
+      <dependency id="Oracle.ManagedDataAccess" version="12.1.24160719" />
+    </dependencies>
+  </metadata>
+  
+  <files>
+	<file src="DataLoader\bin\x86\release\DatabaseLoader.dll" target="lib\net46" />
+	<file src="DataLoader\bin\x86\release\DatabaseLoader.pdb" target="lib\net46" />
+	<file src="DataLoader\bin\x86\release\DatabaseLoader.XML" target="lib\net46" />
+  </files>
+  
+</package>

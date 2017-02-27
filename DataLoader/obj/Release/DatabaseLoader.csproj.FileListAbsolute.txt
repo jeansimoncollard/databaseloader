@@ -1,0 +1,7 @@
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\bin\Release\DataLoader.dll
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\bin\Release\DataLoader.pdb
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\bin\Release\Oracle.DataAccess.dll
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\obj\Release\DataLoader.Properties.Resources.resources
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\obj\Release\DatabaseLoader.csproj.GenerateResource.Cache
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\obj\Release\DataLoader.dll
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\obj\Release\DataLoader.pdb

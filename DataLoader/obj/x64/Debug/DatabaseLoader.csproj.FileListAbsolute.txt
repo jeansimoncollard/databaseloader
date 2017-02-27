@@ -1,0 +1,8 @@
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\bin\x64\Debug\DatabaseLoader.dll
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\bin\x64\Debug\DatabaseLoader.pdb
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\obj\x64\Debug\DatabaseLoader.Properties.Resources.resources
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\obj\x64\Debug\DatabaseLoader.csproj.GenerateResource.Cache
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\obj\x64\Debug\DatabaseLoader.dll
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\obj\x64\Debug\DatabaseLoader.pdb
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\bin\x64\Debug\DatabaseLoader.dll.config
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\bin\x64\Debug\Oracle.ManagedDataAccess.dll
