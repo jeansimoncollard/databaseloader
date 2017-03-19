@@ -14,12 +14,12 @@ namespace DatabaseLoader.Entities
 
         public DatabaseLoaderException(string message)
         : base(message)
-    {
+        {
         }
 
         public DatabaseLoaderException(string message, Exception inner)
         : base(message, inner)
-    {
+        {
         }
     }
 }
