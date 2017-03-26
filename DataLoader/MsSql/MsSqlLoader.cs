@@ -13,10 +13,17 @@ using System.Threading.Tasks;
 
 namespace DatabaseLoader.MsSql
 {
-    public class MsSqlLoader
+    /// <summary>
+    /// This class is responsible for loading and unloading from the database the ".dataload" files created with Database Loader Editor.
+    /// </summary>
+    public class MsSqlLoader : IMsSqlLoader
     {
         private DataloadReader _dataloadReader;
         private ProcessStarter _processStarter;
+
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
         public MsSqlLoader()
         {
             _dataloadReader = new DataloadReader();
@@ -24,7 +31,7 @@ namespace DatabaseLoader.MsSql
         }
 
         /// <summary>
-        /// This function tries to bulk load the data first. If it fails, it tries the conventional load to retrieve the error information.
+        /// This function loads the compiled file from Database Loader Editor.
         /// </summary>
         /// <param name="connectionString">Connection string of the database to load the data into.</param>
         /// <param name="filePath">Full path of the ".dataload" file to be loaded in the database.</param>

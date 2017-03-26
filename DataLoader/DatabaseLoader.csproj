@@ -83,6 +83,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MsSql\IMsSqlLoader.cs" />
     <Compile Include="MsSql\Resources\UnloadProcessMsSqlSourceCode.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

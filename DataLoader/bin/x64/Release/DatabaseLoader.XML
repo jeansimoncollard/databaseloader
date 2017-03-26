@@ -4,6 +4,57 @@
         <name>DatabaseLoader</name>
     </assembly>
     <members>
+        <member name="T:DatabaseLoader.MsSql.IMsSqlLoader">
+            <summary>
+            Provides methods to load and unload in the database the ".dataload" files. It is implemented by MsSqlLoader.
+            </summary>
+        </member>
+        <member name="M:DatabaseLoader.MsSql.IMsSqlLoader.Load(System.String,System.String,System.Boolean)">
+            <summary>
+            This loads the compiled file from Database Loader Editor
+            </summary>
+            <param name="connectionString">Connection string of the database to load the data into.</param>
+            <param name="filePath">Full path of the ".dataload" file to be loaded in the database.</param>
+            <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
+        </member>
+        <member name="M:DatabaseLoader.MsSql.IMsSqlLoader.Unload(System.String,System.String)">
+            <summary>
+            This function unloads the data from the database.
+            </summary>
+            <remarks>
+            If the data set contains relative dates, the data must be unloaded on the same day that it has been loaded.
+            </remarks>
+            <param name="connectionString">Connection string of the database to load the data into.</param>
+            <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
+        </member>
+        <member name="T:DatabaseLoader.MsSql.MsSqlLoader">
+            <summary>
+            This class is responsible for loading and unloading from the database the ".dataload" files created with Database Loader Editor.
+            </summary>
+        </member>
+        <member name="M:DatabaseLoader.MsSql.MsSqlLoader.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:DatabaseLoader.MsSql.MsSqlLoader.Load(System.String,System.String,System.Boolean)">
+            <summary>
+            This function loads the compiled file from Database Loader Editor.
+            </summary>
+            <param name="connectionString">Connection string of the database to load the data into.</param>
+            <param name="filePath">Full path of the ".dataload" file to be loaded in the database.</param>
+            <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
+        </member>
+        <member name="M:DatabaseLoader.MsSql.MsSqlLoader.Unload(System.String,System.String)">
+            <summary>
+            This function unloads the data from the database.
+            </summary>
+            <remarks>
+            If the data set contains relative dates, the data must be unloaded on the same day that it has been loaded.
+            </remarks>
+            <param name="connectionString">Connection string of the database to load the data into.</param>
+            <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
+        </member>
         <member name="T:DatabaseLoader.Properties.Resources">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
@@ -58,9 +109,14 @@
                         //couple last ar [rest of string was truncated]&quot;;.
              </summary>
         </member>
+        <member name="T:DatabaseLoader.Shared.ILoader">
+            <summary>
+            This is the base interface for Data Loaders. It specifies a Load and Unload function.
+            </summary>
+        </member>
         <member name="M:DatabaseLoader.Shared.ILoader.Load(System.String,System.String,System.Boolean)">
             <summary>
-            This function tries to bulk load the data first. If it fails, it tries the conventional load to retrieve the error information.
+            This function loads the compiled file from Database Loader Editor.
             </summary>
             <param name="connectionString">Connection string of the database to load the data into.</param>
             <param name="filePath">Full path of the ".dataload" file to be loaded in the database.</param>
@@ -78,7 +134,7 @@
         </member>
         <member name="T:DatabaseLoader.Oracle.IOracleLoader">
             <summary>
-            Provides methods to load and unload in the databse the ".dataload" files. It is implemented by OracleLoader.
+            Provides methods to load and unload in the database the ".dataload" files. It is implemented by OracleLoader.
             </summary>
         </member>
         <member name="M:DatabaseLoader.Oracle.IOracleLoader.BulkLoad(System.String,System.String,System.Boolean)">
@@ -100,27 +156,9 @@
             <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
              <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
         </member>
-        <member name="M:DatabaseLoader.Oracle.IOracleLoader.Load(System.String,System.String,System.Boolean)">
-            <summary>
-            This function tries to bulk load the data first. If it fails, it tries the conventional load to retrieve the error information.
-            </summary>
-            <param name="connectionString">Connection string of the database to load the data into.</param>
-            <param name="filePath">Full path of the ".dataload" file to be loaded in the database.</param>
-            <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
-        </member>
-        <member name="M:DatabaseLoader.Oracle.IOracleLoader.Unload(System.String,System.String)">
-            <summary>
-            This function unloads the data from the database.
-            </summary>
-            <remarks>
-            If the data set contains relative dates, the data must be unloaded on the same day that it has been loaded.
-            </remarks>
-            <param name="connectionString">Connection string of the database to load the data into.</param>
-            <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
-        </member>
         <member name="T:DatabaseLoader.Oracle.OracleLoader">
             <summary>
-            This class is responsible for loading and unloading from the database the ".dataload" files created with Database Editor.
+            This class is responsible for loading and unloading from the database the ".dataload" files created with Database Loader Editor.
             </summary>
         </member>
         <member name="M:DatabaseLoader.Oracle.OracleLoader.#ctor">
@@ -156,24 +194,6 @@
             <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
         </member>
         <member name="M:DatabaseLoader.Oracle.OracleLoader.Unload(System.String,System.String)">
-            <summary>
-            This function unloads the data from the database.
-            </summary>
-            <remarks>
-            If the data set contains relative dates, the data must be unloaded on the same day that it has been loaded.
-            </remarks>
-            <param name="connectionString">Connection string of the database to load the data into.</param>
-            <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
-        </member>
-        <member name="M:DatabaseLoader.MsSql.MsSqlLoader.Load(System.String,System.String,System.Boolean)">
-            <summary>
-            This function tries to bulk load the data first. If it fails, it tries the conventional load to retrieve the error information.
-            </summary>
-            <param name="connectionString">Connection string of the database to load the data into.</param>
-            <param name="filePath">Full path of the ".dataload" file to be loaded in the database.</param>
-            <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
-        </member>
-        <member name="M:DatabaseLoader.MsSql.MsSqlLoader.Unload(System.String,System.String)">
             <summary>
             This function unloads the data from the database.
             </summary>

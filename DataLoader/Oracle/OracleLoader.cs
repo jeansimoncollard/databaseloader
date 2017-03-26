@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 namespace DatabaseLoader.Oracle
 {
     /// <summary>
-    /// This class is responsible for loading and unloading from the database the ".dataload" files created with Database Editor.
+    /// This class is responsible for loading and unloading from the database the ".dataload" files created with Database Loader Editor.
     /// </summary>
     public class OracleLoader : IOracleLoader
     {

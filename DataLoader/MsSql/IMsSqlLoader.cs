@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DatabaseLoader.Shared
+﻿namespace DatabaseLoader.MsSql
 {
     /// <summary>
-    /// This is the base interface for Data Loaders. It specifies a Load and Unload function.
+    /// Provides methods to load and unload in the database the ".dataload" files. It is implemented by MsSqlLoader.
     /// </summary>
-    public interface ILoader
+    public interface IMsSqlLoader
     {
+
         /// <summary>
-        /// This function loads the compiled file from Database Loader Editor.
+        /// This loads the compiled file from Database Loader Editor
         /// </summary>
         /// <param name="connectionString">Connection string of the database to load the data into.</param>
         /// <param name="filePath">Full path of the ".dataload" file to be loaded in the database.</param>
         /// <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
+
         void Load(string connectionString, string filePath, bool isPermanent);
 
         /// <summary>
