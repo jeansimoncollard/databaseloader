@@ -66,7 +66,7 @@ namespace DatabaseLoader.Properties {
         ///using System.Diagnostics;
         ///using System.IO;
         ///
-        ///namespace DatabaseLoaderStartupProject
+        ///namespace UnloadProcessMsSqlSourceCode
         ///{
         ///    class Program
         ///    {
@@ -77,9 +77,32 @@ namespace DatabaseLoader.Properties {
         ///            //third arg and following args is connection string (splitted because it contains spaces)
         ///            //couple last arg [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string UnloadProcessSourceCode {
+        internal static string UnloadProcessMsSqlSourceCode {
             get {
-                return ResourceManager.GetString("UnloadProcessSourceCode", resourceCulture);
+                return ResourceManager.GetString("UnloadProcessMsSqlSourceCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to using Oracle.ManagedDataAccess.Client;
+        ///using System;
+        ///using System.Diagnostics;
+        ///using System.IO;
+        ///
+        ///namespace UnloadProcessOracleSourceCode
+        ///{
+        ///    class Program
+        ///    {
+        ///        static void Main(string[] args)
+        ///        {
+        ///            //Spaces in string are separated in different args, so first arg tells how many spaces are in file path.
+        ///            //second arg is parent id
+        ///            //third arg and following args is connection string (splitted because it contains spaces)
+        ///            //couple last ar [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string UnloadProcessOracleSourceCode {
+            get {
+                return ResourceManager.GetString("UnloadProcessOracleSourceCode", resourceCulture);
             }
         }
     }

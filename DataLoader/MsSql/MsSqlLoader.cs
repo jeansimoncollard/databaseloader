@@ -1,7 +1,9 @@
 ﻿using DatabaseLoader.Entities;
+using DatabaseLoader.Properties;
 using DatabaseLoader.Shared;
 using Oracle.ManagedDataAccess.Client;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
@@ -14,9 +16,11 @@ namespace DatabaseLoader.MsSql
     public class MsSqlLoader
     {
         private DataloadReader _dataloadReader;
+        private ProcessStarter _processStarter;
         public MsSqlLoader()
         {
             _dataloadReader = new DataloadReader();
+            _processStarter = new ProcessStarter();
         }
 
         /// <summary>
@@ -29,6 +33,11 @@ namespace DatabaseLoader.MsSql
         {
             var fileContent = File.ReadAllText(filePath);
             executeQuery(connectionString, _dataloadReader.GetInsertQuery(fileContent));
+
+            if (!isPermanent)
+            {
+                startUnloadProcess(connectionString, filePath);
+            }
         }
 
         /// <summary>
@@ -43,6 +52,17 @@ namespace DatabaseLoader.MsSql
         {
             var fileContent = File.ReadAllText(filePath);
             executeQuery(connectionString, _dataloadReader.GetDeleteQuery(fileContent));
+        }
+        private void startUnloadProcess(string connectionString, string filePath)
+        {
+            var parameters = new CompilerParameters();
+            parameters.ReferencedAssemblies.Add("System.dll");
+            parameters.ReferencedAssemblies.Add("System.Data.dll");
+            parameters.GenerateExecutable = true;
+            parameters.GenerateInMemory = false;
+            parameters.OutputAssembly = $"uniquedataunloader{Guid.NewGuid()}.exe";
+
+            _processStarter.StartProcess(connectionString, filePath, Resources.UnloadProcessMsSqlSourceCode, parameters);
         }
 
         private void executeQuery(string connectionString, string query)

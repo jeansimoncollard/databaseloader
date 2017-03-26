@@ -4,6 +4,60 @@
         <name>DatabaseLoader</name>
     </assembly>
     <members>
+        <member name="T:DatabaseLoader.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:DatabaseLoader.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:DatabaseLoader.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:DatabaseLoader.Properties.Resources.UnloadProcessMsSqlSourceCode">
+             <summary>
+               Looks up a localized string similar to using Oracle.ManagedDataAccess.Client;
+            using System;
+            using System.Diagnostics;
+            using System.IO;
+            
+            namespace UnloadProcessMsSqlSourceCode
+            {
+                class Program
+                {
+                    static void Main(string[] args)
+                    {
+                        //Spaces in string are separated in different args, so first arg tells how many spaces are in file path.
+                        //second arg is parent id
+                        //third arg and following args is connection string (splitted because it contains spaces)
+                        //couple last arg [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+        <member name="P:DatabaseLoader.Properties.Resources.UnloadProcessOracleSourceCode">
+             <summary>
+               Looks up a localized string similar to using Oracle.ManagedDataAccess.Client;
+            using System;
+            using System.Diagnostics;
+            using System.IO;
+            
+            namespace UnloadProcessOracleSourceCode
+            {
+                class Program
+                {
+                    static void Main(string[] args)
+                    {
+                        //Spaces in string are separated in different args, so first arg tells how many spaces are in file path.
+                        //second arg is parent id
+                        //third arg and following args is connection string (splitted because it contains spaces)
+                        //couple last ar [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
         <member name="M:DatabaseLoader.Shared.ILoader.Load(System.String,System.String,System.Boolean)">
             <summary>
             This function tries to bulk load the data first. If it fails, it tries the conventional load to retrieve the error information.
@@ -128,41 +182,6 @@
             </remarks>
             <param name="connectionString">Connection string of the database to load the data into.</param>
             <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
-        </member>
-        <member name="T:DatabaseLoader.Properties.Resources">
-            <summary>
-              A strongly-typed resource class, for looking up localized strings, etc.
-            </summary>
-        </member>
-        <member name="P:DatabaseLoader.Properties.Resources.ResourceManager">
-            <summary>
-              Returns the cached ResourceManager instance used by this class.
-            </summary>
-        </member>
-        <member name="P:DatabaseLoader.Properties.Resources.Culture">
-            <summary>
-              Overrides the current thread's CurrentUICulture property for all
-              resource lookups using this strongly typed resource class.
-            </summary>
-        </member>
-        <member name="P:DatabaseLoader.Properties.Resources.UnloadProcessSourceCode">
-             <summary>
-               Looks up a localized string similar to using Oracle.ManagedDataAccess.Client;
-            using System;
-            using System.Diagnostics;
-            using System.IO;
-            
-            namespace DatabaseLoaderStartupProject
-            {
-                class Program
-                {
-                    static void Main(string[] args)
-                    {
-                        //Spaces in string are separated in different args, so first arg tells how many spaces are in file path.
-                        //second arg is parent id
-                        //third arg and following args is connection string (splitted because it contains spaces)
-                        //couple last arg [rest of string was truncated]&quot;;.
-             </summary>
         </member>
     </members>
 </doc>

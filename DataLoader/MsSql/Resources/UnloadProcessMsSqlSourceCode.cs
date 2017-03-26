@@ -1,9 +1,9 @@
-using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Data.SqlClient;
 
-namespace DatabaseLoaderStartupProject
+namespace UnloadProcessMsSqlSourceCode
 {
     class Program
     {
@@ -58,12 +58,12 @@ namespace DatabaseLoaderStartupProject
 
         public void ExecuteDeleteQuery(string connectionString, string query)
         {
-            using (var connection = new OracleConnection(connectionString))
+            using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var command = new OracleCommand();
+                var command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = "begin execute immediate 'SET CONSTRAINTS ALL DEFERRED'; " + query + " end;";
+                command.CommandText = "BEGIN TRANSACTION; " + query + " COMMIT TRANSACTION;";
                 command.ExecuteNonQuery();
             }
         }

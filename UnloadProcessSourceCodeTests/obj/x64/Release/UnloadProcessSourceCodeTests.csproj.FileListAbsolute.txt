@@ -4,3 +4,4 @@ F:\Programmation\dataLoader\DataLoader\DataLoader\UnloadProcessSourceCodeTests\b
 F:\Programmation\dataLoader\DataLoader\DataLoader\UnloadProcessSourceCodeTests\obj\x64\Release\UnloadProcessSourceCodeTests.exe
 F:\Programmation\dataLoader\DataLoader\DataLoader\UnloadProcessSourceCodeTests\obj\x64\Release\UnloadProcessSourceCodeTests.pdb
 F:\Programmation\dataLoader\DataLoader\DataLoader\UnloadProcessSourceCodeTests\bin\x64\Release\Oracle.ManagedDataAccess.dll
+F:\Programmation\dataLoader\DataLoader\DataLoader\UnloadProcessSourceCodeTests\obj\x64\Release\UnloadProcessSourceCodeTests.csprojResolveAssemblyReference.cache

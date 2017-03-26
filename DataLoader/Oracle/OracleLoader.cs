@@ -19,7 +19,7 @@ namespace DatabaseLoader.Oracle
     {
         private CSharpCodeProvider _cSharpCodeProvider;
         private DataloadReader _dataloadReader;
-
+        private ProcessStarter _processStarter;
         /// <summary>
         /// Default constructor.
         /// </summary>
@@ -27,6 +27,7 @@ namespace DatabaseLoader.Oracle
         {
             _cSharpCodeProvider = new CSharpCodeProvider();
             _dataloadReader = new DataloadReader();
+            _processStarter = new ProcessStarter();
         }
 
 
@@ -203,55 +204,20 @@ namespace DatabaseLoader.Oracle
             }
         }
 
-        private int startUnloadProcess(string connectionString, string filePath)
-        {
-            deletePreviousDataUnloaderExeFiles();
-
-            var processSourceCode = Resources.UnloadProcessSourceCode;
-
+        private void startUnloadProcess(string connectionString, string filePath)
+        {          
             var parameters = new CompilerParameters();
             parameters.ReferencedAssemblies.Add("System.dll");
             parameters.ReferencedAssemblies.Add("Oracle.ManagedDataAccess.dll");
             parameters.ReferencedAssemblies.Add("System.Data.dll");
             parameters.GenerateExecutable = true;
             parameters.GenerateInMemory = false;
-            parameters.OutputAssembly = $"uniquedataunloader{Guid.NewGuid()}.exe";
+            parameters.OutputAssembly = $"uniquedataunloader{Guid.NewGuid()}.exe";         
 
-            var results = _cSharpCodeProvider.CompileAssemblyFromSource(parameters, processSourceCode);
-
-            if (results.Errors.Count != 0)
-            {
-                throw new Exception($"Compilation error of ressource file: {results.Errors[0].ErrorText}");
-            }
-
-            var process = new Process();
-            process.StartInfo = new ProcessStartInfo(results.PathToAssembly, $"{filePath.Count(x => x == ' ')} {Process.GetCurrentProcess().Id.ToString()} {connectionString} {filePath}");
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.CreateNoWindow = true;
-            process.Start();
-
-            return process.Id;
+            _processStarter.StartProcess(connectionString, filePath, Resources.UnloadProcessOracleSourceCode, parameters);
         }
 
-        //We have to delete them or else they will stack up each time we run a test.
-        private void deletePreviousDataUnloaderExeFiles()
-        {
-            var currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-            var dataunloaderfiles = Directory.GetFiles(currentDirectory, "uniquedataunloader*.exe");
-
-            foreach (var file in dataunloaderfiles)
-            {
-                try
-                {
-                    File.Delete(file);
-                }
-                catch //If file can't be deleted. It means it is still in use, which is ok, don't do anything.
-                {
-
-                }
-            }
-        }
 
         private MatchCollection divideQueryLines(string program)
         {

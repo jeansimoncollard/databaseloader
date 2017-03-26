@@ -10,9 +10,9 @@ namespace DatabaseLoaderStartupProject
         {
             var DatabaseLoader = new MsSqlLoader();
             DatabaseLoader.Unload("Server=jean-simon-pc;database=AdventureWorks2014;User Id=jeansimon; Password=password;", @"F:\Programmation\dataLoader\fileExamples\gender=m.dataload");
-            DatabaseLoader.Load("Server=jean-simon-pc;database=AdventureWorks2014;User Id=jeansimon; Password=password;", @"F:\Programmation\dataLoader\fileExamples\gender=m.dataload", false);
+            DatabaseLoader.Load("Server=jean-simon-pc;database=AdventureWorks2014;User Id=jeansimon; Password=password;", @"F:\Programmation\dataLoader\fileExamples\gender=m.dataload", true);
             Console.Read();
-            DatabaseLoader.Unload("Server=jean-simon-pc;database=AdventureWorks2014;User Id=jeansimon; Password=password;", @"F:\Programmation\dataLoader\fileExamples\gender=m.dataload");
+            //DatabaseLoader.Unload("Server=jean-simon-pc;database=AdventureWorks2014;User Id=jeansimon; Password=password;", @"F:\Programmation\dataLoader\fileExamples\gender=m.dataload");
         }
     }
 }
