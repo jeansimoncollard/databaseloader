@@ -7,3 +7,4 @@ F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\obj\x64\Release\Dat
 F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\bin\x64\Release\DatabaseLoader.XML
 F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\bin\x64\Release\DatabaseLoader.dll.config
 F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\bin\x64\Release\Oracle.ManagedDataAccess.dll
+F:\Programmation\dataLoader\DataLoader\DataLoader\DataLoader\obj\x64\Release\DatabaseLoader.csprojResolveAssemblyReference.cache

@@ -1,5 +1,10 @@
-﻿using System;
+﻿using DatabaseLoader.Entities;
+using DatabaseLoader.Shared;
+using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +13,12 @@ namespace DatabaseLoader.MsSql
 {
     public class MsSqlLoader
     {
+        private DataloadReader _dataloadReader;
+        public MsSqlLoader()
+        {
+            _dataloadReader = new DataloadReader();
+        }
+
         /// <summary>
         /// This function tries to bulk load the data first. If it fails, it tries the conventional load to retrieve the error information.
         /// </summary>
@@ -16,7 +27,8 @@ namespace DatabaseLoader.MsSql
         /// <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
         public void Load(string connectionString, string filePath, bool isPermanent)
         {
-
+            var fileContent = File.ReadAllText(filePath);
+            executeQuery(connectionString, _dataloadReader.GetInsertQuery(fileContent));
         }
 
         /// <summary>
@@ -29,7 +41,33 @@ namespace DatabaseLoader.MsSql
         /// <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
         public void Unload(string connectionString, string filePath)
         {
-
+            var fileContent = File.ReadAllText(filePath);
+            executeQuery(connectionString, _dataloadReader.GetDeleteQuery(fileContent));
         }
+
+        private void executeQuery(string connectionString, string query)
+        {
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    var command = new SqlCommand();
+                    command.Connection = connection;
+                    command.CommandText = $"BEGIN TRANSACTION; {query} COMMIT TRANSACTION;";
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException e)
+            {
+                handleQueryException(e, query);
+            }
+        }
+        private void handleQueryException(SqlException e, string query)
+        {
+            throw new DatabaseLoaderException($"Line <{e.LineNumber}> caused the following error: <{e.Message}>", e, e.LineNumber);
+        }
+
+
     }
 }

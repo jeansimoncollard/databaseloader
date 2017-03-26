@@ -4,31 +4,7 @@
         <name>DatabaseLoader</name>
     </assembly>
     <members>
-        <member name="T:DatabaseLoader.IOracleLoader">
-            <summary>
-            Provides methods to load and unload in the databse the ".dataload" files. It is implemented by OracleLoader 
-            </summary>
-        </member>
-        <member name="M:DatabaseLoader.IOracleLoader.BulkLoad(System.String,System.String,System.Boolean)">
-            <summary>
-            This function defers all deferable constraints before loading the data in the database. This makes the loading much faster, but loses all error information if the loading fails. 
-            </summary>
-            <remarks>
-            The database must contain deferable constraints for BulkLoad to make a difference.
-            </remarks>
-            <param name="connectionString">Connection string of the database to load the data into.</param>
-            <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
-            <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
-        </member>
-        <member name="M:DatabaseLoader.IOracleLoader.ConventionalLoad(System.String,System.String,System.Boolean)">
-            <summary>
-            This function loads the data in the database using simple insert statements.
-            </summary>
-            <param name="connectionString">Connection string of the database to load the data into.</param>
-            <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
-             <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
-        </member>
-        <member name="M:DatabaseLoader.IOracleLoader.Load(System.String,System.String,System.Boolean)">
+        <member name="M:DatabaseLoader.Shared.ILoader.Load(System.String,System.String,System.Boolean)">
             <summary>
             This function tries to bulk load the data first. If it fails, it tries the conventional load to retrieve the error information.
             </summary>
@@ -36,7 +12,7 @@
             <param name="filePath">Full path of the ".dataload" file to be loaded in the database.</param>
             <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
         </member>
-        <member name="M:DatabaseLoader.IOracleLoader.Unload(System.String,System.String)">
+        <member name="M:DatabaseLoader.Shared.ILoader.Unload(System.String,System.String)">
             <summary>
             This function unloads the data from the database.
             </summary>
@@ -46,33 +22,12 @@
             <param name="connectionString">Connection string of the database to load the data into.</param>
             <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
         </member>
-        <member name="T:DatabaseLoader.OracleLoader">
+        <member name="T:DatabaseLoader.Oracle.IOracleLoader">
             <summary>
-            This class is responsible for loading and unloading from the database the ".dataload" files created with Database Editor.
+            Provides methods to load and unload in the databse the ".dataload" files. It is implemented by OracleLoader.
             </summary>
         </member>
-        <member name="M:DatabaseLoader.OracleLoader.#ctor">
-            <summary>
-            Default constructor.
-            </summary>
-        </member>
-        <member name="M:DatabaseLoader.OracleLoader.Load(System.String,System.String,System.Boolean)">
-            <summary>
-            This function tries to bulk load the data first. If it fails, it tries the conventional load to retrieve the error information.
-            </summary>
-            <param name="connectionString">Connection string of the database to load the data into.</param>
-            <param name="filePath">Full path of the ".dataload" file to be loaded in the database.</param>
-            <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
-        </member>
-        <member name="M:DatabaseLoader.OracleLoader.ConventionalLoad(System.String,System.String,System.Boolean)">
-            <summary>
-            This function loads the data in the database using simple insert statements.
-            </summary>
-            <param name="connectionString">Connection string of the database to load the data into.</param>
-            <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
-             <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
-        </member>
-        <member name="M:DatabaseLoader.OracleLoader.BulkLoad(System.String,System.String,System.Boolean)">
+        <member name="M:DatabaseLoader.Oracle.IOracleLoader.BulkLoad(System.String,System.String,System.Boolean)">
             <summary>
             This function defers all deferable constraints before loading the data in the database. This makes the loading much faster, but loses all error information if the loading fails. 
             </summary>
@@ -83,7 +38,88 @@
             <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
             <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
         </member>
-        <member name="M:DatabaseLoader.OracleLoader.Unload(System.String,System.String)">
+        <member name="M:DatabaseLoader.Oracle.IOracleLoader.ConventionalLoad(System.String,System.String,System.Boolean)">
+            <summary>
+            This function loads the data in the database using simple insert statements.
+            </summary>
+            <param name="connectionString">Connection string of the database to load the data into.</param>
+            <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
+             <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
+        </member>
+        <member name="M:DatabaseLoader.Oracle.IOracleLoader.Load(System.String,System.String,System.Boolean)">
+            <summary>
+            This function tries to bulk load the data first. If it fails, it tries the conventional load to retrieve the error information.
+            </summary>
+            <param name="connectionString">Connection string of the database to load the data into.</param>
+            <param name="filePath">Full path of the ".dataload" file to be loaded in the database.</param>
+            <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
+        </member>
+        <member name="M:DatabaseLoader.Oracle.IOracleLoader.Unload(System.String,System.String)">
+            <summary>
+            This function unloads the data from the database.
+            </summary>
+            <remarks>
+            If the data set contains relative dates, the data must be unloaded on the same day that it has been loaded.
+            </remarks>
+            <param name="connectionString">Connection string of the database to load the data into.</param>
+            <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
+        </member>
+        <member name="T:DatabaseLoader.Oracle.OracleLoader">
+            <summary>
+            This class is responsible for loading and unloading from the database the ".dataload" files created with Database Editor.
+            </summary>
+        </member>
+        <member name="M:DatabaseLoader.Oracle.OracleLoader.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:DatabaseLoader.Oracle.OracleLoader.Load(System.String,System.String,System.Boolean)">
+            <summary>
+            This function tries to bulk load the data first. If it fails, it tries the conventional load to retrieve the error information.
+            </summary>
+            <param name="connectionString">Connection string of the database to load the data into.</param>
+            <param name="filePath">Full path of the ".dataload" file to be loaded in the database.</param>
+            <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
+        </member>
+        <member name="M:DatabaseLoader.Oracle.OracleLoader.ConventionalLoad(System.String,System.String,System.Boolean)">
+            <summary>
+            This function loads the data in the database using simple insert statements.
+            </summary>
+            <param name="connectionString">Connection string of the database to load the data into.</param>
+            <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
+             <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
+        </member>
+        <member name="M:DatabaseLoader.Oracle.OracleLoader.BulkLoad(System.String,System.String,System.Boolean)">
+            <summary>
+            This function defers all deferable constraints before loading the data in the database. This makes the loading much faster, but loses all error information if the loading fails. 
+            </summary>
+            <remarks>
+            The database must contain deferable constraints for BulkLoad to make a difference.
+            </remarks>
+            <param name="connectionString">Connection string of the database to load the data into.</param>
+            <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
+            <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
+        </member>
+        <member name="M:DatabaseLoader.Oracle.OracleLoader.Unload(System.String,System.String)">
+            <summary>
+            This function unloads the data from the database.
+            </summary>
+            <remarks>
+            If the data set contains relative dates, the data must be unloaded on the same day that it has been loaded.
+            </remarks>
+            <param name="connectionString">Connection string of the database to load the data into.</param>
+            <param name="filePath">Full path of the ".dataload" file to be loaded.</param>
+        </member>
+        <member name="M:DatabaseLoader.MsSql.MsSqlLoader.Load(System.String,System.String,System.Boolean)">
+            <summary>
+            This function tries to bulk load the data first. If it fails, it tries the conventional load to retrieve the error information.
+            </summary>
+            <param name="connectionString">Connection string of the database to load the data into.</param>
+            <param name="filePath">Full path of the ".dataload" file to be loaded in the database.</param>
+            <param name="isPermanent">Whether to leave the data in the database after the process is finished running. True to not make the data stay in the database, false to automatically unload it when process terminates.</param>
+        </member>
+        <member name="M:DatabaseLoader.MsSql.MsSqlLoader.Unload(System.String,System.String)">
             <summary>
             This function unloads the data from the database.
             </summary>
@@ -111,7 +147,7 @@
         </member>
         <member name="P:DatabaseLoader.Properties.Resources.UnloadProcessSourceCode">
              <summary>
-               Looks up a localized string similar to using Oracle.DataAccess.Client;
+               Looks up a localized string similar to using Oracle.ManagedDataAccess.Client;
             using System;
             using System.Diagnostics;
             using System.IO;
@@ -122,10 +158,10 @@
                 {
                     static void Main(string[] args)
                     {
-                        //Because the connectionstring might contain spaces and those are split in 
-                        //different array element when passed as process arguments, 
-                        //I placed the processId and file path at each end, because we know they don&apos;t contain spaces. 
-                        //And assume [rest of string was truncated]&quot;;.
+                        //Spaces in string are separated in different args, so first arg tells how many spaces are in file path.
+                        //second arg is parent id
+                        //third arg and following args is connection string (splitted because it contains spaces)
+                        //couple last arg [rest of string was truncated]&quot;;.
              </summary>
         </member>
     </members>

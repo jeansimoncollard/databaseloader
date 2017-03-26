@@ -21,5 +21,13 @@ namespace DatabaseLoader.Entities
         : base(message, inner)
         {
         }
+
+        public DatabaseLoaderException(string message, Exception inner, int lineNumber)
+: base(message, inner)
+        {
+            LineNumber = lineNumber;
+        }
+
+        public int LineNumber { get; set; }
     }
 }

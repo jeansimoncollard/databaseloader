@@ -61,7 +61,7 @@ namespace DatabaseLoader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to using Oracle.DataAccess.Client;
+        ///   Looks up a localized string similar to using Oracle.ManagedDataAccess.Client;
         ///using System;
         ///using System.Diagnostics;
         ///using System.IO;
@@ -72,10 +72,10 @@ namespace DatabaseLoader.Properties {
         ///    {
         ///        static void Main(string[] args)
         ///        {
-        ///            //Because the connectionstring might contain spaces and those are split in 
-        ///            //different array element when passed as process arguments, 
-        ///            //I placed the processId and file path at each end, because we know they don&apos;t contain spaces. 
-        ///            //And assume [rest of string was truncated]&quot;;.
+        ///            //Spaces in string are separated in different args, so first arg tells how many spaces are in file path.
+        ///            //second arg is parent id
+        ///            //third arg and following args is connection string (splitted because it contains spaces)
+        ///            //couple last arg [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string UnloadProcessSourceCode {
             get {

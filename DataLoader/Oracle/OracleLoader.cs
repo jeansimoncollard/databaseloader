@@ -130,16 +130,16 @@ namespace DatabaseLoader.Oracle
         private void bulkLoadPermanent(string connectionString, string filePath)
         {
             var fileContent = File.ReadAllText(filePath);
-            executeInsertQuery(connectionString, _dataloadReader.GetInsertQuery(fileContent), executeDeleteOrInsertQueryDeferConstraints);
+            executeQuery(connectionString, _dataloadReader.GetInsertQuery(fileContent), executeDeleteOrInsertQueryDeferConstraints);
         }
 
         private void conventionalLoadPermanent(string connectionString, string filePath)
         {
             var fileContent = File.ReadAllText(filePath);
-            executeInsertQuery(connectionString, _dataloadReader.GetInsertQuery(fileContent), executeDeleteOrInsertQuery);
+            executeQuery(connectionString, _dataloadReader.GetInsertQuery(fileContent), executeDeleteOrInsertQuery);
         }
 
-        private void executeInsertQuery(string connectionString, string query, Action<string, string> executeQuery)
+        private void executeQuery(string connectionString, string query, Action<string, string> executeQuery)
         {
             try
             {
@@ -175,7 +175,7 @@ namespace DatabaseLoader.Oracle
         private void handleQueryException(OracleException e, string query)
         {
             var lineposition = e.Message.IndexOf(" line ");
-            if (lineposition != -1)
+            if (lineposition != -1) //Find on what line the error was
             {
                 var i = 0;
                 while (lineposition + 6 + i < e.Message.Length && char.IsDigit(e.Message[lineposition + 6 + i]))
@@ -186,7 +186,7 @@ namespace DatabaseLoader.Oracle
 
                 var dividedQueryLines = divideQueryLines(query);
 
-                throw new DatabaseLoaderException($"Line <{dividedQueryLines[lineNumber - 1].Value}> caused the following error: <{e.Message}>", e);
+                throw new DatabaseLoaderException($"Line <{dividedQueryLines[lineNumber - 1].Value}> caused the following error: <{e.Message}>", e, Convert.ToInt32(dividedQueryLines[lineNumber - 1].Value));
             }
             throw e;
         }

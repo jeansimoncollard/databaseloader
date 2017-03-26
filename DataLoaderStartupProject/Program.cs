@@ -1,4 +1,5 @@
 ﻿using DatabaseLoader;
+using DatabaseLoader.MsSql;
 using System;
 
 namespace DatabaseLoaderStartupProject
@@ -7,18 +8,11 @@ namespace DatabaseLoaderStartupProject
     {
         static void Main(string[] args)
         {
-            IOracleLoader DatabaseLoader = new OracleLoader();
-            DatabaseLoader.Unload("user id=hr; password=password; data source=206.167.194.154/XE;", @"F:\Programmation\dataLoader\fileExamples\Document 1.dataload");
-            DatabaseLoader.Load("user id=hr; password=password; data source=206.167.194.154/XE;", @"F:\Programmation\dataLoader\fileExamples\Document 1.dataload", false);
+            var DatabaseLoader = new MsSqlLoader();
+            DatabaseLoader.Unload("Server=jean-simon-pc;database=AdventureWorks2014;User Id=jeansimon; Password=password;", @"F:\Programmation\dataLoader\fileExamples\gender=m.dataload");
+            DatabaseLoader.Load("Server=jean-simon-pc;database=AdventureWorks2014;User Id=jeansimon; Password=password;", @"F:\Programmation\dataLoader\fileExamples\gender=m.dataload", false);
             Console.Read();
-
-            DatabaseLoader.Unload("user id=hr; password=password; data source=206.167.194.154/XE;", @"F:\Programmation\dataLoader\fileExamples\Document 1.dataload");
-            DatabaseLoader.BulkLoad("user id=hr; password=password; data source=206.167.194.154/XE;", @"F:\Programmation\dataLoader\fileExamples\Document 1.dataload", false);
-            Console.Read();
-
-            DatabaseLoader.Unload("user id=hr; password=password; data source=206.167.194.154/XE;", @"F:\Programmation\dataLoader\fileExamples\Document 1.dataload");
-            DatabaseLoader.ConventionalLoad("user id=hr; password=password; data source=206.167.194.154/XE;", @"F:\Programmation\dataLoader\fileExamples\Document 1.dataload", false);
-            Console.Read();
+            DatabaseLoader.Unload("Server=jean-simon-pc;database=AdventureWorks2014;User Id=jeansimon; Password=password;", @"F:\Programmation\dataLoader\fileExamples\gender=m.dataload");
         }
     }
 }
